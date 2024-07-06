@@ -17,13 +17,13 @@ This project involves scraping GitHub repositories to find the most recent `.csv
 
 - `main.py`: The main script to run the project.
 - `submission_format.csv`: The CSV file containing the required criteria (columns).
-- `github_links.txt`: A text file containing the GitHub repository URLs to be processed.
+- `github_links.csv`: A text file containing the GitHub repository URLs to be processed.
 
 ## Running the Project
 
 1. **Prepare the Input Files**:
     - `submission_format.csv`: This file should contain the column names required for the validation in the first row.
-    - `github_links.txt`: List all GitHub repository URLs you want to process, each on a new line.
+    - `github_links.csv`: List all GitHub repository URLs you want to process, each on a new line.
 
 2. **Set Up the Environment**:
     - Ensure `main.py`, `submission_format.csv`, and `github_links.txt` are in the same directory.
@@ -59,7 +59,7 @@ Here's a brief overview of what each part of the code does:
 
 ### Main Execution
 
-- Reads the GitHub repository URLs from `github_links.txt`.
+- Reads the GitHub repository URLs from `github_links.csv`.
 - Reads the criteria from `submission_format.csv`.
 - Processes each repository, finds the most recent CSV file, validates it, and counts the number of valid CSV files.
 - Outputs the result and saves valid CSV files.
