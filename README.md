@@ -26,7 +26,7 @@ This project involves scraping GitHub repositories to find the most recent `.csv
     - `github_links.csv`: List all GitHub repository URLs you want to process, each on a new line.
 
 2. **Set Up the Environment**:
-    - Ensure `main.py`, `submission_format.csv`, and `github_links.txt` are in the same directory.
+    - Ensure `main.py`, `submission_format.csv`, and `github_links.csv` are in the same directory.
 
 3. **Run the Script**:
     - Execute the `main.py` script using your terminal or command prompt.
