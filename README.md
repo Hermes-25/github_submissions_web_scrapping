@@ -1,70 +1,70 @@
-# github_submissions_web_scrapping
-
 # Web Scraping and CSV Validation Project
 
-## Project Overview
+This project involves scraping GitHub repositories to find the most recent `.csv` or `.xlsx` file, converting `.xlsx` files to `.csv`, and validating these files against a given criteria. The goal is to identify and process valid CSV files that match the required format.
 
-- This project aims to automate the process of validating submissions for a hackathon by scraping GitHub repositories, identifying the correct CSV files, and ensuring they meet specific criteria. The solution handles various edge cases, including multiple CSV files, files with different formats (.csv and .xlsx), nested directories, and inaccessible repositories.
+## Prerequisites
 
-## Find the Scrapped Datasets here - 
-- https://drive.google.com/drive/folders/1mg0CdQor7mq_YSpovJgr9Hbv-PhiZDsj?usp=sharing
+1. **Python 3.x**: Ensure you have Python installed on your system.
+2. **Required Libraries**: Install the necessary Python libraries using `pip`.
 
-# Key Functionalities
-- Web Scraping GitHub Repositories: The script accesses GitHub repositories to find CSV files.
-- File Conversion: Converts .xlsx files to .csv format.
-- Validation Against Criteria: Ensures the CSV files match specified column criteria.
-- Handling Multiple and Nested Files: Traverses directories to find the most recent CSV file.
-- Error Handling: Reports inaccessible repositories and invalid files.
-- Output: Saves valid CSV files locally and provides detailed reports.
+    ```sh
+    pip install pandas requests openpyxl
+    ```
 
-## Libraries Used
-- requests: For making HTTP requests to GitHub's API to access repository contents.
-- pandas: For handling and validating CSV and Excel data.
-- io: For handling in-memory data streams.
-- tempfile: For creating temporary files for converted data.
-- urllib.parse: For parsing URLs.
+3. **GitHub API Token**: Obtain a GitHub personal access token. This token allows you to make authenticated requests to the GitHub API, providing a higher rate limit.
 
-# How It Works
+## Project Structure
 
-## Checking URL Validity:
+- `main.py`: The main script to run the project.
+- `submission_format.csv`: The CSV file containing the required criteria (columns).
+- `github_links.txt`: A text file containing the GitHub repository URLs to be processed.
 
-- The script checks if the provided URL is a valid GitHub repository URL.
+## Running the Project
 
-## Accessing Repository Contents:
+1. **Prepare the Input Files**:
+    - `submission_format.csv`: This file should contain the column names required for the validation in the first row.
+    - `github_links.txt`: List all GitHub repository URLs you want to process, each on a new line.
 
-- Uses GitHub's API to fetch the contents of the repository.
-- Handles authentication to manage API rate limits.
+2. **Set Up the Environment**:
+    - Ensure `main.py`, `submission_format.csv`, and `github_links.txt` are in the same directory.
 
-## Finding CSV and Excel Files:
+3. **Run the Script**:
+    - Execute the `main.py` script using your terminal or command prompt.
 
-- Traverses the repository contents, including nested directories, to find files with .csv or .xlsx extensions.
-- Filters out files that do not meet the naming criteria (e.g., files containing "training" are excluded).
+    ```sh
+    python main.py
+    ```
 
-## Converting Excel Files:
+    The script will prompt you to enter your GitHub API token. You can also provide it directly in the script for convenience.
 
-- Converts .xlsx files to .csv format using pandas.
-- Saves the converted files locally for further processing.
+## Code Explanation
 
-## Getting the Last Commit Date:
+Here's a brief overview of what each part of the code does:
 
-- Retrieves the last commit date for each file to identify the most recently modified file.
+### Libraries
 
-## Validating CSV Files:
+- `pandas`: Used for reading and processing CSV and Excel files.
+- `requests`: Used for making HTTP requests to the GitHub API.
+- `io`: Used for handling in-memory file objects.
+- `tempfile`: Used for creating temporary files.
+- `os`: Used for file path operations.
 
-- Reads the CSV file into a pandas DataFrame.
-- Checks if the DataFrame's columns match the specified criteria (respondent_id, h1n1_vaccine, seasonal_vaccine).
-- Only CSV files that match the criteria are considered valid.
+### Functions
 
-## Reporting and Saving Valid CSVs:
+- `get_repo_contents`: Fetches the contents of a given GitHub repository path.
+- `get_last_commit_date`: Retrieves the date of the most recent commit for a given file path.
+- `find_any_csv`: Searches for the most recent `.csv` or `.xlsx` file in a repository and converts `.xlsx` files to `.csv`.
+- `validate_csv`: Validates the structure of a CSV file against the provided criteria.
+- `process_repository`: Processes each repository URL, finds, and validates the most recent CSV file.
 
-- Keeps a count of valid CSV files found in each repository.
-- Saves valid CSV files locally with a name based on the repository URL.
+### Main Execution
 
-## Error Handling:
+- Reads the GitHub repository URLs from `github_links.txt`.
+- Reads the criteria from `submission_format.csv`.
+- Processes each repository, finds the most recent CSV file, validates it, and counts the number of valid CSV files.
+- Outputs the result and saves valid CSV files.
 
-- Increments a counter for inaccessible repositories.
-- Reports URLs that are not valid GitHub repositories.
+## Example Usage
 
-
-# Conclusion
-- This project demonstrates a robust solution for automating the validation of hackathon submissions by scraping GitHub repositories. It effectively handles multiple file formats, nested directories, and various error conditions. The use of pandas for data manipulation and requests for API interaction ensures that the solution is both powerful and flexible.
+```sh
+python main.py
