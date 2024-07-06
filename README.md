@@ -6,6 +6,9 @@
 
 - This project aims to automate the process of validating submissions for a hackathon by scraping GitHub repositories, identifying the correct CSV files, and ensuring they meet specific criteria. The solution handles various edge cases, including multiple CSV files, files with different formats (.csv and .xlsx), nested directories, and inaccessible repositories.
 
+## Find the Scrapped Datasets here - 
+- https://drive.google.com/drive/folders/1mg0CdQor7mq_YSpovJgr9Hbv-PhiZDsj?usp=sharing
+
 # Key Functionalities
 - Web Scraping GitHub Repositories: The script accesses GitHub repositories to find CSV files.
 - File Conversion: Converts .xlsx files to .csv format.
